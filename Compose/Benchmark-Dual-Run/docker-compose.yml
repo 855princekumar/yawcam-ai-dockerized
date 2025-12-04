@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  yawcam_cpu:
+    image: devprincekumar/yawcam-ai:latest
+    container_name: yawcam_cpu
+    restart: unless-stopped
+    ports:
+      - "5995:5995"
+    environment:
+      - TZ=Asia/Kolkata
+    volumes:
+      - ./cpu-data:/root/.yawcam-ai
+
+  yawcam_gpu:
+    image: devprincekumar/yawcam-ai-cuda:latest
+    container_name: yawcam_gpu
+    restart: unless-stopped
+    ports:
+      - "6995:5995"
+    environment:
+      - TZ=Asia/Kolkata
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    volumes:
+      - ./gpu-data:/root/.yawcam-ai

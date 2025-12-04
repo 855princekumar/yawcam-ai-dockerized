@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  yawcam-alpine:
+    image: alpine-yawcam-ai:latest   # update to hub name once pushed
+    container_name: yawcam-alpine
+    restart: unless-stopped
+
+    environment:
+      - TZ=Asia/Kolkata
+
+    ports:
+      - "5995:5995"   # Web UI
+      - "9081:9081"   # Backend API
+      - "9082:9082"   # WebSocket / event notifications
+
+    # 👇 Persistence mappings — preserve configuration & recordings
+    volumes:
+      # Full internal settings directory
+      - ./yawcam_data/.yawcam-ai:/root/.yawcam-ai
+      # Recording vault for exported video files
+      - ./yawcam_data/recordings:/root/yawcam-ai/videos
+
+    # Optional logging file mapping (recommended)
+      - ./yawcam_data/logs:/root/.yawcam-ai/logs
+
+    # Optional extra — access for model swapping
+      - ./yawcam_data/models:/root/.yawcam-ai/models
