@@ -28,12 +28,12 @@ Running computer vision on constrained edge hardware is hard:
 
 So instead of running Yawcam-AI “manually,” this repo:
 
-✔ containerizes it,
-✔ gives it persistent state,
-✔ integrates it with edge telemetry,
-✔ aligns it with RTSP capture nodes,
-✔ prepares future offload to Jetson-class accelerators, and
-✔ fits it inside a modular edge ecosystem.
+- containerizes it
+- gives it persistent state
+- integrates it with edge telemetry
+- aligns it with RTSP capture nodes
+- prepares future offload to Jetson-class accelerators 
+- fits it inside a modular edge ecosystem
 
 The mindset behind this work:
 
@@ -74,14 +74,15 @@ The CUDA version falls back gracefully to CPU where GPU is absent.
 yawcam-ai-dockerized/
 │
 ├── docker/
-│   ├── cpu/      # CPU-only build for Pi, NUC, cloud instances
-│   ├── gpu/      # CUDA-enabled build for x86 + NVIDIA
-│   └── alpine/   # experimental minimal footprint
+│   ├── CPU/Dockerfile              # CPU-only build for Pi, NUC, cloud instances
+│   ├── GPU/Dockerfile              # CUDA-enabled build for x86 + NVIDIA
+│   └── alpine/Dockerfile           # experimental minimal footprint
+|   └── alpine/docker-compose.yml   # experimental minimal footprint
 │
 ├── compose/
-│   ├── docker-compose.cpu.yml      # Raspberry Pi / generic CPU
-│   ├── docker-compose.gpu.yml      # workstations / Jetson / GPU nodes
-│   └── docker-compose.dual.yml     # benchmarking mode
+│   ├── CPU/docker-compose.yml                  # Raspberry Pi / generic CPU
+│   ├── GPU/docker-compose.yml                  # workstations / Jetson / GPU nodes
+│   └── Benchmark-Dual-Run/docker-compose.yml   # benchmarking mode
 │
 ├── docs/
 │   ├── 01-project-summary.md
@@ -96,21 +97,20 @@ yawcam-ai-dockerized/
 
 # Core Features (Edge-Friendly)
 
-✔ Persistent configuration + models + database
-✔ Persistent video recording vault
-✔ LAN web UI
-✔ RTSP-first workflow
-✔ CPU inference on Pi & low-power SBCs
-✔ GPU inference on CUDA nodes
-✔ Hot-swappable YOLO variants
-✔ Side-by-side CPU vs GPU benchmarking into future
-✔ Local event automation:
+- Persistent configuration + models + database
+- Persistent video recording vault
+- LAN web UI
+- RTSP-first workflow
+- CPU inference on Pi & low-power SBCs
+- GPU inference on CUDA nodes
+- Hot-swappable YOLO variants
+- Side-by-side CPU vs GPU benchmarking into future
+- Local event automation:
+     * email alerts
+     * FTP uploads
+     * external script execution on detection
 
-* email alerts
-* FTP uploads
-* external script execution on detection
-
-This means **action happens on device** — not cloud dependent.
+This means **action happens on device** not cloud dependent.
 
 ---
 
@@ -246,9 +246,9 @@ yolo-v4-tiny
 
 You may:
 
-✔ retrain
-✔ fine-tune
-✔ replace weights/config per variant
+- retrain
+- fine-tune
+- replace weights/config per variant
 
 by overwriting the container’s model directories via mapped volumes. Arbitrary model families require upstream engine modification (YOLOv8/RT-DETR etc. not plug-and-play — for now).
 
@@ -316,12 +316,12 @@ Container state is mapped to host:
 
 These hold:
 
-✔ models
-✔ configuration
-✔ database
-✔ logs
-✔ detected events
-✔ video clips
+- models
+- configuration
+- database
+- logs
+- detected events
+- video clips
 
 Giving **durable edge state** for troubleshooting, analysis or forensic replay.
 
@@ -380,5 +380,6 @@ with an upgrade path toward Jetson offloading.
 This is **practical edge AI engineering**, not hype.
 
 ---
+
 
 
