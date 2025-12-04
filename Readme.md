@@ -1,3 +1,5 @@
+<img width="700" height="350" alt="banner" src="https://github.com/user-attachments/assets/34e254b1-d767-48fa-a2e3-ae91ff789c38" />
+
 # Yawcam-AI Dockerized 
 ### Edge-Ready Deployment
 
@@ -378,4 +380,5 @@ with an upgrade path toward Jetson offloading.
 This is **practical edge AI engineering**, not hype.
 
 ---
+
 
