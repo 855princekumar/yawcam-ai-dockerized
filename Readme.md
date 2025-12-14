@@ -6,7 +6,7 @@
 ---
 
 This project delivers **containerized, persistent, and edge-oriented deployments** of
-[Yawcam-AI](https://github.com/yawcam/yawcam-ai) — turning it from a desktop application into a
+[Yawcam-AI](https://github.com/yawcam/yawcam-ai) - turning it from a desktop application into a
 **service-grade inference and recording engine** suitable for edge devices like Raspberry Pi,
 NUCs, and GPU-accelerated nodes.
 
@@ -380,6 +380,7 @@ with an upgrade path toward Jetson offloading.
 This is **practical edge AI engineering**, not hype.
 
 ---
+
 
 
 
